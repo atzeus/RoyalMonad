@@ -4,7 +4,10 @@ module Control.Monad.Royal where
 
 Royal monads (or relative polymonads) generalize monads, polymonads _and_ relative monads.
 
-Therefore royal are the king of monads! The ultimate abstraction! 
+Therefore Royal Monads (captalize to emphasise royalness) are the king of monads! 
+
+The ultimate abstraction! 
+
 Ditch your boring old (relative) (poly) monad, and start programming
 with the king of monads! 
 
