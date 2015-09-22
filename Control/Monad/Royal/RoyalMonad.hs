@@ -2,7 +2,7 @@
 module Control.Monad.Royal where
 {-
 
-Royal monads (or relative polymonads) generalize monads, polymonads _and_ relative monads.
+Royal Monads (or relative polymonads) generalize monads, polymonads _and_ relative monads.
 
 Therefore Royal Monads (captalize to emphasise royalness) are the king of monads! 
 
