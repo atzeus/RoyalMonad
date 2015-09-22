@@ -1,4 +1,7 @@
 # RoyalMonad
+
+All hail the Royal Monad!
+
 Royal monads (or relative polymonads) generalize polymonads _and_ relative monads.
 
 Therefore royal are the king of monads! The ultimate abstraction! 
