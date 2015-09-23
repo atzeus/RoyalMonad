@@ -7,7 +7,7 @@
 -- Stability   :  royal
 -- Portability :  royal
 --
--- Introducing his majesty the Royal Monad
+-- Introducing his majesty the Royal Monad.
 --
 -- Royal Monads (or relative polymonads) generalize monads, polymonads _and_ relative monads.
 --
@@ -17,7 +17,7 @@
 -- 
 -- Ditch your boring old relative, poly or ordinary monad, and start programming with the king of monads! 
 -- 
--- Bow before the ultimate generality of the Royal Monad, infidels!
+-- Bow before the ultimate generality of the Royal Monad!
 
 {-# LANGUAGE UndecidableInstances,FlexibleInstances,MultiParamTypeClasses #-}
 module Control.Monad.Royal where
@@ -26,14 +26,15 @@ module Control.Monad.Royal where
 class RoyalReturn m r where
   royalReturn :: r a -> m a
 
-{- |
- laws:
-@ 
-  royalBind m royalReturn = m
-  royalBind (royalReturn x) f = f x 
-  royalBind m (\x -> royalBind (f x) g) = royalBind (royalBind m f) g
-@
--}
+-- |
+-- laws (same as monad, but much more Royal):
+--
+-- prop> royalBind m royalReturn = m
+--
+-- prop> royalBind (royalReturn x) f = f x 
+--
+-- prop> royalBind m (\x -> royalBind (f x) g) = royalBind (royalBind m f) g
+--
 class (RoyalReturn m r, RoyalReturn n r, RoyalReturn p r) => 
      RoyalMonad m n p r where
   royalBind   :: m a -> (r a -> n a) -> p a
@@ -43,11 +44,13 @@ class (RoyalReturn m r, RoyalReturn n r, RoyalReturn p r) =>
 
 {- | Relative monads
  laws:
-@ 
-relativeBind m royalReturn = m
-relativeBind (royalReturn x) f = f x 
-relativeBind m (\x -> relativeBind (f x) g) = relativeBind (relativeBind m f) g
-@
+
+prop> relativeBind m royalReturn = m
+
+prop> relativeBind (royalReturn x) f = f x 
+
+prop> relativeBind m (\x -> relativeBind (f x) g) = relativeBind (relativeBind m f) g
+
 -}
 class RoyalReturn m r => RelMonad m r where
   relativeBind :: m a -> (r a -> m b) -> m b
@@ -58,11 +61,13 @@ class NonRoyalReturn m where
 
 {- | Relative monads
  laws:
-@ 
-polyBind m rreturn = m
-polyBind (rreturn x) f = f x 
-polyBind m (\x -> polyBind (f x) g) = polyBind (polyBind m f) g
-@
+
+prop> polyBind m rreturn = m
+
+prop> polyBind (rreturn x) f = f x 
+
+prop> polyBind m (\x -> polyBind (f x) g) = polyBind (polyBind m f) g
+
 -}
 class (NonRoyalReturn m, NonRoyalReturn n, NonRoyalReturn p) =>
     PolyMonad m n p where
