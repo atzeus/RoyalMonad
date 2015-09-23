@@ -37,7 +37,7 @@ class RoyalReturn m r where
 --
 class (RoyalReturn m r, RoyalReturn n r, RoyalReturn p r) => 
      RoyalMonad m n p r where
-  royalBind   :: m a -> (r a -> n a) -> p a
+  royalBind   :: m a -> (r a -> n b) -> p b
 
 
 
